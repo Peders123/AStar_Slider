@@ -38,7 +38,13 @@ void initNode(NODE *node, short state[], NODE *parent, short move, short goal[])
 
     node->parent = parent;
     node->move = move;
-    node->g_cost = parent->g_cost++;
+
+    if (parent == NULL) {
+        node->g_cost = 0;
+    } else {
+        node->g_cost = (parent->g_cost)+1;
+    }
+
     node->h_cost = manhattanCost(node->state, goal);
     node->f_cost = node->g_cost + node->h_cost;
 
@@ -57,10 +63,10 @@ short getMoves(short state[]) {
         }
     }
 
-    if (index > 2) {moveVal += 1;}
-    if (index < 6) {moveVal += 2;}
-    if (index % 3 == 0) {moveVal += 4;}
-    if (index % 3 == 2) {moveVal += 8;}
+    if (index > 2) {moveVal += 1;} /* down */
+    if (index < 6) {moveVal += 2;} /* up */
+    if (index % 3 > 0) {moveVal += 4;} /* right */
+    if (index % 3 < 2) {moveVal += 8;} /* left */
 
     return moveVal;
 

@@ -1,9 +1,6 @@
 #include <manhattan_cost.h>
 
 
-static short getIndex(short, short []);
-
-
 short manhattanCost(short state[], short target[]) {
 
     short i = 0;
