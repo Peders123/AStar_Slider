@@ -3,14 +3,27 @@
 
 int main() {
 
-    short *solution = algorithm();
+    short startState[] = {7,2,4,5,0,6,8,3,1};
+    short endState[] = {0,1,2,3,4,5,6,7,8};
+
+    short *reverseSolution = algorithm(startState, endState);
+
+    int i;
+    int len = reverseSolution[0];
+    short *solution;
+
+    if ((solution = (short *)malloc(len)) == NULL) {
+        printf("Out of memory\n");
+        exit(1);
+    }
+
+    for (i = len; i > 0; i--) {
+        solution[len-i] = reverseSolution[i];
+    }
 
     printf("ANSWER: \n");
 
-    int i;
-    int len = solution[0];
-
-    for (i = len; i > 1; i--) {
+    for (i = 0; i < len-1; i++) {
         switch (solution[i]) {
             case 8:
                 printf("Left, ");
@@ -27,7 +40,7 @@ int main() {
         }
     }
 
-    switch (solution[1]) {
+    switch (solution[len-1]) {
         case 8:
             printf("Left");
             break;
@@ -46,7 +59,7 @@ int main() {
 
 }
 
-short * algorithm() {
+short * algorithm(short startState[], short endState[]) {
 
     NODE *open = NULL;
     NODE *closed = NULL;
@@ -61,9 +74,6 @@ short * algorithm() {
     short move;
     short moves;
     short *childState;
-
-    short startState[] = {7,2,4,5,0,6,8,3,1};
-    short endState[] = {0,1,2,3,4,5,6,7,8};
 
     initNode(&start, startState, NULL, 0, endState);
 

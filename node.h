@@ -19,8 +19,8 @@ typedef struct Node {
 /*----- function prototypes --------------------------------------------------*/
 
 extern int eq(NODE, NODE);
-extern void print(NODE);
 extern void initNode(NODE *, short [], NODE *, short, short []);
 extern short getMoves(short []);
+extern void printState(short []);
 
 #endif

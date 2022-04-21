@@ -16,18 +16,6 @@ int eq(NODE node, NODE other) {
 
 }
 
-void print(NODE node) {
-
-    short i;
-
-    printf("[");
-    for (i=0; i<8; i++) {
-        printf("%d ", node.state[i]);
-    }
-    printf("%d] : %d\n", node.state[8], node.f_cost);
-
-}
-
 void initNode(NODE *node, short state[], NODE *parent, short move, short goal[]) {
 
     short i;
@@ -69,5 +57,19 @@ short getMoves(short state[]) {
     if (index % 3 < 2) {moveVal += 8;} /* left */
 
     return moveVal;
+
+}
+
+void printState(short state[]) {
+
+    short i;
+
+    printf(" ----- \n");
+
+    for (i = 0; i < 9; i+=3) {
+        printf("|%d %d %d|", state[i], state[i+1], state[i+2]);
+    }
+
+    printf(" ----- \n\n");
 
 }

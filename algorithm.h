@@ -9,7 +9,7 @@
 
 /*----- function prototypes --------------------------------------------------*/
 
-short * algorithm();
+short * algorithm(short [], short []);
 short * createChildState(short, short []);
 
 #endif
