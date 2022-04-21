@@ -67,7 +67,7 @@ void printState(short state[]) {
     printf(" ----- \n");
 
     for (i = 0; i < 9; i+=3) {
-        printf("|%d %d %d|", state[i], state[i+1], state[i+2]);
+        printf("|%d %d %d|\n", state[i], state[i+1], state[i+2]);
     }
 
     printf(" ----- \n\n");

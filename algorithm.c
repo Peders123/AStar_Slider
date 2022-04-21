@@ -6,7 +6,12 @@ int main() {
     short startState[] = {7,2,4,5,0,6,8,3,1};
     short endState[] = {0,1,2,3,4,5,6,7,8};
 
+    printf("Start:\n");
+    printState(startState);
+
     short *reverseSolution = algorithm(startState, endState);
+
+    sleep(2);
 
     int i;
     int len = reverseSolution[0];
@@ -21,7 +26,27 @@ int main() {
         solution[len-i] = reverseSolution[i];
     }
 
-    printf("ANSWER: \n");
+    short *state;
+
+    state[0] = startState[0];
+    state[1] = startState[1];
+    state[2] = startState[2];
+    state[3] = startState[3];
+    state[4] = startState[4];
+    state[5] = startState[5];
+    state[6] = startState[6];
+    state[7] = startState[7];
+    state[8] = startState[8];
+
+    for (i = 0; i < len; i++) {
+
+        state = createChildState(solution[i], state);
+
+        printState(state);
+
+        usleep(100000);
+
+    }
 
     for (i = 0; i < len-1; i++) {
         switch (solution[i]) {
