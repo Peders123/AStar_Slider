@@ -11,5 +11,6 @@
 
 short * algorithm(short [], short []);
 short * createChildState(short, short []);
+short * scramble();
 
 #endif

@@ -3,8 +3,21 @@
 
 int main() {
 
-    short startState[] = {7,2,4,5,0,6,8,3,1};
-    short endState[] = {0,1,2,3,4,5,6,7,8};
+    short *scrambled = scramble();
+
+    short startState[9];
+
+    startState[0] = scrambled[0];
+    startState[1] = scrambled[1];
+    startState[2] = scrambled[2];
+    startState[3] = scrambled[3];
+    startState[4] = scrambled[4];
+    startState[5] = scrambled[5];
+    startState[6] = scrambled[6];
+    startState[7] = scrambled[7];
+    startState[8] = scrambled[8];
+
+    short endState[] = {1,2,3,4,5,6,7,8,0};
 
     printf("Start:\n");
     printState(startState);
@@ -37,6 +50,8 @@ int main() {
     state[6] = startState[6];
     state[7] = startState[7];
     state[8] = startState[8];
+
+    printState(state);
 
     for (i = 0; i < len; i++) {
 
@@ -227,6 +242,30 @@ short * createChildState(short move, short parent[]) {
             state[index-3] = temp;
             break;
     }
+
+    return state;
+
+}
+
+short * scramble() {
+
+    short startState[9];
+    short *state;
+    short moves;
+
+    startState[0] = 1;
+    startState[1] = 2;
+    startState[2] = 3;
+    startState[3] = 4;
+    startState[4] = 5;
+    startState[5] = 6;
+    startState[6] = 7;
+    startState[7] = 8;
+    startState[8] = 0;
+
+
+    state = createChildState(1, startState);
+    state = createChildState(4, state);
 
     return state;
 
