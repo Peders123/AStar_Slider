@@ -3,8 +3,7 @@
 
 int main() {
 
-    short *scrambled = scramble();
-
+    /*short *scrambled = scramble();
     short startState[9];
 
     startState[0] = scrambled[0];
@@ -15,8 +14,9 @@ int main() {
     startState[5] = scrambled[5];
     startState[6] = scrambled[6];
     startState[7] = scrambled[7];
-    startState[8] = scrambled[8];
+    startState[8] = scrambled[8];*/
 
+    short startState[] = {7,2,4,5,0,6,8,3,1};
     short endState[] = {1,2,3,4,5,6,7,8,0};
 
     printf("Start:\n");
